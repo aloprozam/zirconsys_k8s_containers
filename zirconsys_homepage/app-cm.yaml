@@ -48,7 +48,7 @@ data:
               description: Pi-hole
               widget:
                 type: pihole
-                url: "{{HOMEPAGE_VAR_ZIRCONSYS_PIHOLE_URL}}"
+                url: https://10.10.10.5
                 key: "{{HOMEPAGE_VAR_ZIRCONSYS_PIHOLE_TOKEN}}"
       - Containers:
           - Portainer:
