@@ -24,7 +24,10 @@ spec:
             enableServiceLinks: true
             containers:
                 - name: homepage
-                  image: "ghcr.io/benphelps/homepage:latest"
+                  image: "ghcr.io/gethomepage/homepage:latest"
+                  envFrom:
+                  - secretRef:
+                      name: homepage-zirconsys-secrets
                   resources:
                     requests:
                       memory: "64Mi"

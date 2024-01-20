@@ -121,11 +121,6 @@ data:
               siteMonitor: "{{HOMEPAGE_VAR_ZIRCONSYS_ARGOCD_URL}}"
               description: ci\cd
     widgets.yaml: |
-      - resources:
-          cpu: true
-          memory: true
-          disk: /
-
       - search:
           provider: google
           target: _blank
