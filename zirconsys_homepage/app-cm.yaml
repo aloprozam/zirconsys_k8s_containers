@@ -6,8 +6,7 @@ metadata:
     labels:
         app.kubernetes.io/name: homepage
 data:
-    kubernetes.yaml: |
-        mode: cluster
+    kubernetes.yaml: ""
     custom.css: ""
     custom.js: ""
     bookmarks.yaml: |
