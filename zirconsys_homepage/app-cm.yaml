@@ -1,0 +1,168 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: homepage
+    namespace: homepage
+    labels:
+        app.kubernetes.io/name: homepage
+data:
+    kubernetes.yaml: |
+        mode: cluster
+    custom.css: ""
+    custom.js: ""
+    bookmarks.yaml: |
+      ---
+      # For configuration options and examples, please see:
+      # https://gethomepage.dev/latest/configs/bookmarks
+
+      - Developer:
+          - Github:
+              - abbr: GH
+                href: https://github.com/
+
+      - Entertainment:
+          - YouTube:
+              - abbr: YT
+                href: https://youtube.com/
+          - Habr:
+              - abbr: Habr
+                href: https://habr.com/
+    services.yaml: |
+      ---
+      - Hypervisor:
+          - Iceco PVE:
+              icon: proxmox.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXMOX_URL}}"
+              siteMonitor: https://10.10.10.250:8006
+              description: Proxmox Node
+              widget:
+                type: proxmox
+                url: https://10.10.10.250:8006
+                username: root@pam!homepage
+                password: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXMOX_TOKEN}}"
+                node: iceco
+      - Services:
+          - Pi-Hole:
+              icon: pi-hole.svg
+              href: http://dnsmasq.zircon.local/admin/
+              siteMonitor: "{{HOMEPAGE_VAR_ZIRCONSYS_PIHOLE_URL}}"
+              description: Pi-hole
+              widget:
+                type: pihole
+                url: "{{HOMEPAGE_VAR_ZIRCONSYS_PIHOLE_URL}}"
+                key: "{{HOMEPAGE_VAR_ZIRCONSYS_PIHOLE_TOKEN}}"
+      - Containers:
+          - Portainer:
+              icon: portainer.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_URL}}"
+              siteMonitor: https://10.10.10.6:9443
+              description: Portainer
+              widget:
+                type: portainer
+                url: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_URL}}"
+                env: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_ENV}}"
+                key: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_TOKEN}}"
+          - Rancher:
+              icon: rancher.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_RANCHER_URL}}"
+              description: Rancher
+              siteMonitor: "{{HOMEPAGE_VAR_ZIRCONSYS_RANCHER_URL}}"
+      - Storage:
+          - DSM:
+              icon: synology-dsm.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_SYNOLOGY_URL}}"
+              siteMonitor: https://10.10.10.10:5001
+              description: Synology
+              widget:
+                type: diskstation
+                url: https://10.10.10.10:5001
+                username: "{{HOMEPAGE_VAR_ZIRCONSYS_SYNOLOGY_USER}}"
+                password: "{{HOMEPAGE_VAR_ZIRCONSYS_SYNOLOGY_PASS}}"
+          - Minio:
+              icon: minio.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_MINIO_URL}}"
+              siteMonitor: http://10.10.10.6:9001
+              description: Minio
+      - Monitoring:
+          - Grafana:
+              icon: grafana.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_GRAFANA_URL}}"
+              siteMonitor: http://10.10.10.6:3000
+              description: Grafana
+              widget:
+                type: grafana
+                url: http://10.10.10.6:3000
+                username: "{{HOMEPAGE_VAR_ZIRCONSYS_GRAFANA_USER}}"
+                password: "{{HOMEPAGE_VAR_ZIRCONSYS_GRAFANA_PASS}}"
+          - UptimeKuma:
+              icon: uptime-kuma.svg
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_UPTIME_URL}}"
+              siteMonitor: http://10.10.10.6:3001
+              description: hosts reaceability
+              widget:
+                type: uptimekuma
+                url: "{{HOMEPAGE_VAR_ZIRCONSYS_UPTIME_URL}}"
+                slug: dash
+      - Proxy:
+          - NginxProxyManager:
+              icon: nginx-proxy-manager.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_URL}}"
+              siteMonitor: http://10.10.10.6:81
+              description: proxy
+              widget:
+                type: npm
+                url: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_URL}}"
+                username: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_USER}}"
+                password: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_PASS}}"
+      - CI\CD:
+          - ArgoCD:
+              icon: argocd.png
+              href: "{{HOMEPAGE_VAR_ZIRCONSYS_ARGOCD_URL}}"
+              siteMonitor: "{{HOMEPAGE_VAR_ZIRCONSYS_ARGOCD_URL}}"
+              description: ci\cd
+    widgets.yaml: |
+      - resources:
+          cpu: true
+          memory: true
+          disk: /
+
+      - search:
+          provider: google
+          target: _blank
+
+      - datetime:
+          text_size: xl
+          format:
+            timeStyle: short
+
+      - openweathermap:
+          label: Chisinau #optional
+          latitude: 47.0056
+          longitude: 28.8575
+          units: metric # or imperial
+          provider: openweathermap
+          apiKey: "{{HOMEPAGE_VAR_WEATHER_API_KEY}}"
+    settings.yaml: |
+      ---
+      # For configuration options and examples, please see:
+      # https://gethomepage.dev/latest/configs/settings
+
+      providers:
+        openweathermap: "{{HOMEPAGE_VAR_WEATHER_API_KEY}}"
+      #  weatherapi: weatherapiapikey
+
+      title: Zirconsys Dash
+
+      background:
+        image: https://s3-api.zirconsys.cloud/zirconsys-s3/static/mountains.jpg
+        blur: sm # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
+        saturate: 50 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+        brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+        opacity: 30 # 0-100
+
+      theme: dark 
+
+      layout:
+        Monitoring:
+          style: row
+          columns: 2
