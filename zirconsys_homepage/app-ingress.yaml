@@ -14,7 +14,7 @@ metadata:
 spec:
     ingressClassName: zirconsys-ingress
     rules:
-        - host: "dash.zircon.local"
+        - host: "dash.zirconsys.cloud"
           http:
               paths:
                   - path: "/"
