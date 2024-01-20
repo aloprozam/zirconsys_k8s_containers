@@ -96,7 +96,7 @@ data:
           - UptimeKuma:
               icon: uptime-kuma.svg
               href: "{{HOMEPAGE_VAR_ZIRCONSYS_UPTIME_URL}}"
-              siteMonitor: http://10.10.10.6:3001
+              siteMonitor: "{{HOMEPAGE_VAR_ZIRCONSYS_UPTIME_URL}}"
               description: hosts reaceability
               widget:
                 type: uptimekuma
