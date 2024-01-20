@@ -44,7 +44,7 @@ data:
           - Pi-Hole:
               icon: pi-hole.svg
               href: http://dnsmasq.zircon.local/admin/
-              siteMonitor: "{{HOMEPAGE_VAR_ZIRCONSYS_PIHOLE_URL}}"
+              siteMonitor: https://10.10.10.5
               description: Pi-hole
               widget:
                 type: pihole
