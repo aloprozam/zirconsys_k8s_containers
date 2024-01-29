@@ -1,26 +1,27 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: uptime-kuma-ingress
-    namespace: uptime-kuma
-    labels:
-        app.kubernetes.io/name: uptime-kuma
-        cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
-        nginx.ingress.kubernetes.io/rewrite-target: /
+  name: uptime-kuma-ingress
+  namespace: uptime-kuma
+  labels:
+    app.kubernetes.io/name: uptime-kuma
+    cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-    ingressClassName: zirconsys-ingress
-    tls:
-      - hosts:
-          - uptime.zirconsys.cloud
-        secretName: uptime-tls-certificate-ingress
-    rules:
-        - host: "uptime.zirconsys.cloud"
-          http:
-              paths:
-                  - path: "/"
-                    pathType: Prefix
-                    backend:
-                        service:
-                            name: uptime-kuma-svc
-                            port:
-                                number: 3001
+  ingressClassName: zirconsys-ingress
+  tls:
+    - hosts:
+        - uptime.zirconsys.cloud
+      secretName: uptime-tls-certificate-ingress
+  rules:
+    - host: uptime.zirconsys.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: uptime-kuma-svc
+                port:
+                  number: 3001
