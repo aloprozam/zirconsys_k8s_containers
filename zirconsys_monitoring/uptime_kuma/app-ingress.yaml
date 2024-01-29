@@ -5,8 +5,14 @@ metadata:
     namespace: uptime-kuma
     labels:
         app.kubernetes.io/name: uptime-kuma
+        cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
+        nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
     ingressClassName: zirconsys-ingress
+    tls:
+      - hosts:
+          - uptime.zirconsys.cloud
+        secretName: uptime-tls-certificate-ingress
     rules:
         - host: "uptime.zirconsys.cloud"
           http:
