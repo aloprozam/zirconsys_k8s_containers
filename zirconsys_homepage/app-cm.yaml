@@ -51,16 +51,6 @@ data:
                 url: https://10.10.10.5
                 key: "{{HOMEPAGE_VAR_ZIRCONSYS_PIHOLE_TOKEN}}"
       - Containers:
-          # - Portainer:
-          #     icon: portainer.png
-          #     href: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_URL}}"
-          #     siteMonitor: https://10.10.10.6:9443
-          #     description: Portainer
-          #     widget:
-          #       type: portainer
-          #       url: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_URL}}"
-          #       env: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_ENV}}"
-          #       key: "{{HOMEPAGE_VAR_ZIRCONSYS_PORTAINER_TOKEN}}"
           - Rancher:
               icon: rancher.png
               href: "{{HOMEPAGE_VAR_ZIRCONSYS_RANCHER_URL}}"
@@ -83,16 +73,6 @@ data:
               siteMonitor: http://10.10.10.6:9001
               description: Minio
       - Monitoring:
-          # - Grafana:
-          #     icon: grafana.png
-          #     href: "{{HOMEPAGE_VAR_ZIRCONSYS_GRAFANA_URL}}"
-          #     siteMonitor: http://10.10.10.6:3000
-          #     description: Grafana
-          #     widget:
-          #       type: grafana
-          #       url: http://10.10.10.6:3000
-          #       username: "{{HOMEPAGE_VAR_ZIRCONSYS_GRAFANA_USER}}"
-          #       password: "{{HOMEPAGE_VAR_ZIRCONSYS_GRAFANA_PASS}}"
           - UptimeKuma:
               icon: uptime-kuma.svg
               href: "{{HOMEPAGE_VAR_ZIRCONSYS_UPTIME_URL}}"
@@ -102,17 +82,6 @@ data:
                 type: uptimekuma
                 url: "{{HOMEPAGE_VAR_ZIRCONSYS_UPTIME_URL}}"
                 slug: dash
-      - Proxy:
-          # - NginxProxyManager:
-          #     icon: nginx-proxy-manager.png
-          #     href: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_URL}}"
-          #     siteMonitor: http://10.10.10.6:81
-          #     description: proxy
-          #     widget:
-          #       type: npm
-          #       url: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_URL}}"
-          #       username: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_USER}}"
-          #       password: "{{HOMEPAGE_VAR_ZIRCONSYS_PROXY_PASS}}"
       - CI\CD:
           - ArgoCD:
               icon: argocd.png
