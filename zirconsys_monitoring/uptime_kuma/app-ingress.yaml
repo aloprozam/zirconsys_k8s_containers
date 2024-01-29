@@ -5,6 +5,7 @@ metadata:
     namespace: uptime-kuma
     labels:
         app.kubernetes.io/name: uptime-kuma
+        argocd.argoproj.io/instance: zirconsys-uptime
     annotations:
         cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
         nginx.ingress.kubernetes.io/rewrite-target: /
