@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: zirconsys-ingress
+  name: dsm-svc
+spec:
+  ports:
+  - name: https
+    port: 5001
+    protocol: TCP
+    targetPort: 5001
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  namespace: zirconsys-ingress
+  name: dsm-endpoint
+subsets:
+- addresses:
+  - ip: 10.10.10.10
+  ports:
+  - name: https
+    port: 5001
+    protocol: TCP

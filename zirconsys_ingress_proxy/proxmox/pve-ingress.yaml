@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: iceco-proxmox-ingress
+  namespace: zirconsys-ingress
+  labels:
+    app.kubernetes.io/name: iceco-proxmox
+  annotations:
+    cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: zirconsys-ingress
+  tls:
+    - hosts:
+        - pve.zirconsys.cloud
+      secretName: pve-tls-certificate-ingress
+  rules:
+    - host: pve.zirconsys.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: iceco-proxmox
+                port:
+                  number: 443

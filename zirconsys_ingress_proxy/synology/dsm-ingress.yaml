@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: zirconsys-ingress
+  name: dsm-ingress
+  labels:
+    app.kubernetes.io/name: synology
+  annotations:
+    cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: zirconsys-ingress
+  tls:
+    - hosts:
+        - dsm.zirconsys.cloud
+      secretName: dsm-tls-certificate-ingress
+  rules:
+    - host: dsm.zirconsys.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dsm-svc
+                port:
+                  number: 5001

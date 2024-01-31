@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: zirconsys-ingress
+  name: iceco-proxmox
+spec:
+  ports:
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 8080
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  namespace: zirconsys-ingress
+  name: iceco-proxmox
+subsets:
+- addresses:
+  - ip: 10.10.10.250
+  ports:
+  - name: https
+    port: 8006
+    protocol: TCP
