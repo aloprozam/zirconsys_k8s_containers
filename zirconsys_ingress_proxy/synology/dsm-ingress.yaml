@@ -25,4 +25,4 @@ spec:
               service:
                 name: dsm-svc
                 port:
-                  number: 5001
+                  number: 443
