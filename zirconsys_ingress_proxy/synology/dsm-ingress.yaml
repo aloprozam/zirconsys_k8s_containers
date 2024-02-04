@@ -9,6 +9,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: zirconsys-ingress
   tls:
@@ -25,4 +26,4 @@ spec:
               service:
                 name: nas-service-v4
                 port:
-                  number: 5001
+                  number: 80
