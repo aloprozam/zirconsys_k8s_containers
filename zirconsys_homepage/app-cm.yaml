@@ -118,7 +118,7 @@ data:
       title: Zirconsys Dash
 
       background:
-        image: https://s3-api.zirconsys.cloud/zirconsys-s3/static/mountains.jpg
+        image: https://s3-api.zirconsys.cloud/zirconsys/static/elder_ring_wall_no_rings.jpg
         blur: sm # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
         saturate: 50 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
         brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
@@ -128,5 +128,11 @@ data:
 
       layout:
         Monitoring:
-          style: row
-          columns: 2
+          style: column
+          columns: 1
+        Hypervisor:
+          style: column
+          columns: 1
+        Storage:
+          style: column
+          rows: 2
