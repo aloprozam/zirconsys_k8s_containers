@@ -8,8 +8,6 @@ metadata:
     app.kubernetes.io/name: synology
   annotations:
     cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: zirconsys-ingress
   tls:
