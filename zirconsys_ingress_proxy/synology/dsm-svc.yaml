@@ -1,24 +1,17 @@
----
 apiVersion: v1
 kind: Service
 metadata:
+  name: nas-service-v4 # example value
   namespace: zirconsys-ingress
-  name: dsm-svc
 spec:
+  type: ExternalName
+  externalName: 10.10.10.10
+  ipFamilies:
+  - IPv4
   ports:
-  - name: http
-    port: 80
-    protocol: TCP
-
----
-apiVersion: v1
-kind: Endpoints
-metadata:
-  namespace: zirconsys-ingress
-  name: dsm-endpoint
-subsets:
-- addresses:
-  - ip: 10.10.10.10
-  ports:
-  - name: http
-    port: 5000
+    - name: nas-5000   # example value
+      protocol: TCP 
+      port: 5000       # example value
+    - name: nas-5001   # example value
+      protocol: TCP
+      port: 5001   

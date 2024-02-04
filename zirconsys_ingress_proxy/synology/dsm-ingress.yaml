@@ -8,6 +8,7 @@ metadata:
     app.kubernetes.io/name: synology
   annotations:
     cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: zirconsys-ingress
   tls:
@@ -22,6 +23,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: dsm-svc
+                name: nas-service-v4
                 port:
-                  number: 80
+                  number: 5001
