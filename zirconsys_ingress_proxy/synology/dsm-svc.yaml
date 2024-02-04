@@ -9,7 +9,7 @@ spec:
   ports:
     - name: nas-5000   # example value
       protocol: TCP 
-      port: 80       # example value
+      port: 5000     # example value
     - name: nas-5001   # example value
       protocol: TCP
-      port: 443   
+      port: 5001
