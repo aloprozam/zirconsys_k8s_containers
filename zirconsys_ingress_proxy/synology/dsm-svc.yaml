@@ -6,8 +6,6 @@ metadata:
 spec:
   type: ExternalName
   externalName: 10.10.10.10
-  ipFamilies:
-  - IPv4
   ports:
     - name: nas-5000   # example value
       protocol: TCP 
