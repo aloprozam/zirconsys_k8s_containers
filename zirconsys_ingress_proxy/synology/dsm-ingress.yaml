@@ -20,7 +20,7 @@ spec:
       http:
         paths:
           - path: /
-            pathType: ImplemetationSpecific
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: nas-service-v4
