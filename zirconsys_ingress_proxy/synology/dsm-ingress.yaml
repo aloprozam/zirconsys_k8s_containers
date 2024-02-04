@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: synology
   annotations:
     cert-manager.io/cluster-issuer: dns01-letsencrypt-prod
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: zirconsys-ingress
@@ -21,9 +21,9 @@ spec:
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: dsm-svc
                 port:
-                  number: 443
+                  number: 80
