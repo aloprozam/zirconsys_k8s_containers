@@ -17,4 +17,5 @@ spec:
     requests:
       storage: 8Gi
   storageClassName: local-path-retain
+  volumeName: pvc-2468c307-7d0e-4e69-8a71-d5a5db640f1b 
   volumeMode: Filesystem
