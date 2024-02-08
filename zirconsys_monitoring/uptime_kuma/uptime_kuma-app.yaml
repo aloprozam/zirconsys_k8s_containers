@@ -40,8 +40,9 @@ spec:
                         containerPort: 3001
                         protocol: TCP
                   volumeMounts:
-                      - name: uptime-kuma-config
-                        mountPath: /app/data
+                      - name: uptime-kuma-pv
+                        mountPath: "/app/data"
             volumes:
-                - name: uptime-kuma-config
-                  emptyDir: {}
+                - name: uptime-kuma-pv
+                  persistentVolumeClaim:
+                  claimName: uptime-kuma-pvc
